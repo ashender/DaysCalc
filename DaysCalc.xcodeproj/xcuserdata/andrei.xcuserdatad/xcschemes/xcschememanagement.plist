@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>DaysCalcTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>75B414531EB321C4002912FE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75B414611EB325E3002912FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		75B414581EB321C4002912FE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B414571EB321C4002912FE /* main.swift */; };
+		75B414651EB325E3002912FE /* DaysCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B414641EB325E3002912FE /* DaysCalcTests.swift */; };
+		75B4146B1EB326C2002912FE /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B4146A1EB326C2002912FE /* DateUtils.swift */; };
+		75B4146C1EB326C2002912FE /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B4146A1EB326C2002912FE /* DateUtils.swift */; };
+		75B4146E1EB3352A002912FE /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B4146D1EB3352A002912FE /* DateTests.swift */; };
+		75B414701EB369FB002912FE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B4146F1EB369FB002912FE /* Date.swift */; };
+		75B414711EB369FB002912FE /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B4146F1EB369FB002912FE /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +31,23 @@
 /* Begin PBXFileReference section */
 		75B414541EB321C4002912FE /* DaysCalc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DaysCalc; sourceTree = BUILT_PRODUCTS_DIR; };
 		75B414571EB321C4002912FE /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		75B414621EB325E3002912FE /* DaysCalcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaysCalcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75B414641EB325E3002912FE /* DaysCalcTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCalcTests.swift; sourceTree = "<group>"; };
+		75B414661EB325E3002912FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75B4146A1EB326C2002912FE /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		75B4146D1EB3352A002912FE /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
+		75B4146F1EB369FB002912FE /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		75B414511EB321C4002912FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75B4145F1EB325E3002912FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				75B414561EB321C4002912FE /* DaysCalc */,
+				75B414631EB325E3002912FE /* DaysCalcTests */,
 				75B414551EB321C4002912FE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				75B414541EB321C4002912FE /* DaysCalc */,
+				75B414621EB325E3002912FE /* DaysCalcTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,8 +79,20 @@
 			isa = PBXGroup;
 			children = (
 				75B414571EB321C4002912FE /* main.swift */,
+				75B4146A1EB326C2002912FE /* DateUtils.swift */,
+				75B4146F1EB369FB002912FE /* Date.swift */,
 			);
 			path = DaysCalc;
+			sourceTree = "<group>";
+		};
+		75B414631EB325E3002912FE /* DaysCalcTests */ = {
+			isa = PBXGroup;
+			children = (
+				75B414641EB325E3002912FE /* DaysCalcTests.swift */,
+				75B414661EB325E3002912FE /* Info.plist */,
+				75B4146D1EB3352A002912FE /* DateTests.swift */,
+			);
+			path = DaysCalcTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +115,23 @@
 			productReference = 75B414541EB321C4002912FE /* DaysCalc */;
 			productType = "com.apple.product-type.tool";
 		};
+		75B414611EB325E3002912FE /* DaysCalcTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75B414671EB325E3002912FE /* Build configuration list for PBXNativeTarget "DaysCalcTests" */;
+			buildPhases = (
+				75B4145E1EB325E3002912FE /* Sources */,
+				75B4145F1EB325E3002912FE /* Frameworks */,
+				75B414601EB325E3002912FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaysCalcTests;
+			productName = DaysCalcTests;
+			productReference = 75B414621EB325E3002912FE /* DaysCalcTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +143,11 @@
 				ORGANIZATIONNAME = MoveForward;
 				TargetAttributes = {
 					75B414531EB321C4002912FE = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = QB7H3G942D;
+						ProvisioningStyle = Automatic;
+					};
+					75B414611EB325E3002912FE = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = QB7H3G942D;
 						ProvisioningStyle = Automatic;
@@ -112,9 +167,20 @@
 			projectRoot = "";
 			targets = (
 				75B414531EB321C4002912FE /* DaysCalc */,
+				75B414611EB325E3002912FE /* DaysCalcTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75B414601EB325E3002912FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75B414501EB321C4002912FE /* Sources */ = {
@@ -122,6 +188,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				75B414581EB321C4002912FE /* main.swift in Sources */,
+				75B414701EB369FB002912FE /* Date.swift in Sources */,
+				75B4146B1EB326C2002912FE /* DateUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75B4145E1EB325E3002912FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75B414651EB325E3002912FE /* DaysCalcTests.swift in Sources */,
+				75B4146E1EB3352A002912FE /* DateTests.swift in Sources */,
+				75B4146C1EB326C2002912FE /* DateUtils.swift in Sources */,
+				75B414711EB369FB002912FE /* Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +315,34 @@
 			};
 			name = Release;
 		};
+		75B414681EB325E3002912FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QB7H3G942D;
+				INFOPLIST_FILE = DaysCalcTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TestTask.DaysCalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		75B414691EB325E3002912FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QB7H3G942D;
+				INFOPLIST_FILE = DaysCalcTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.TestTask.DaysCalcTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -253,6 +360,14 @@
 			buildConfigurations = (
 				75B4145C1EB321C4002912FE /* Debug */,
 				75B4145D1EB321C4002912FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		75B414671EB325E3002912FE /* Build configuration list for PBXNativeTarget "DaysCalcTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75B414681EB325E3002912FE /* Debug */,
+				75B414691EB325E3002912FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
