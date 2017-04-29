@@ -23,32 +23,33 @@ class DateUtils: NSObject {
     static fileprivate let minDate = Date(year: 1901, month: .jan, day: 1)
     static fileprivate let maxDate = Date(year: 2999, month: .dec, day: 31)
 
-    static fileprivate let daysPerYear: UInt = 365
-    static fileprivate let daysPerLeapYear: UInt = 366
+    static fileprivate let daysPerYear: UInt = 365, daysPerLeapYear: UInt = 366
 
     static fileprivate let daysPerMonth:[UInt] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     static func daysBetween(start: Date, end: Date) -> Result {
-        if start < minDate || end > maxDate {
+        guard start > minDate && end < maxDate else {
             return .failure(.outOfIntervalError)
         }
 
-        if !isDateValid(date: start) || !isDateValid(date: end) {
+        guard isDateValid(date: start) && isDateValid(date: end) else {
             return .failure(.nonexistentDate)
         }
 
-        var validatedStart = start
-        var validatedEnd = end
-        if end < start {
-            validatedStart = end
-            validatedEnd = start
+        guard start != end else {
+            return .success(0)
         }
 
-        let toTheEnd = daysByTheEndOfYear(date: validatedStart)
-        let between = daysBetweenYears(start: validatedStart.year, end: validatedEnd.year);
-        let fromBeginning = daysFromBeginningOfYear(date: validatedEnd)
-        if validatedStart.year == validatedEnd.year {
-            return .success(toTheEnd + fromBeginning - daysInYear(year: validatedStart.year))
+        var end = end, start = start
+        if end < start {
+            swap(&end, &start)
+        }
+
+        let toTheEnd = daysByTheEndOfYear(date: start)
+        let between = daysBetweenYears(start: start.year, end: end.year);
+        let fromBeginning = daysFromBeginningOfYear(date: end)
+        if start.year == end.year {
+            return .success(toTheEnd + fromBeginning - daysInYear(year: start.year))
         }
         else {
             return .success(toTheEnd + between + fromBeginning)
@@ -69,9 +70,7 @@ class DateUtils: NSObject {
 
     static func daysInDateMonth(date: Date) -> UInt {
         var numberOfDays = daysPerMonth[Int(date.month.rawValue)]
-        if date.month == .feb && isLeapYear(year: date.year) {
-            numberOfDays += 1
-        }
+        if date.month == .feb && isLeapYear(year: date.year) { numberOfDays += 1 }
         return numberOfDays
     }
 
@@ -80,19 +79,18 @@ class DateUtils: NSObject {
     }
 
     static func daysByTheEndOfYear(date: Date) -> UInt {
-        let isLeap: Bool = isLeapYear(year: date.year)
+        let isLeap = isLeapYear(year: date.year)
         let daysByEndOfMonth = daysByTheEndOfMonth(date: date)
-        var days: UInt = daysPerMonth.dropFirst(Int(date.month.rawValue + 1)).reduce(daysByEndOfMonth) { (total, daysInMonth) -> UInt in total + daysInMonth }
-        if isLeap && (date.month == .jan) {
-            days += 1
-        }
+        var days: UInt = daysPerMonth.dropFirst(Int(date.month.rawValue + 1)).reduce(daysByEndOfMonth) { $0 + $1 }
+        if isLeap && (date.month == .jan) { days += 1 }
         return days
     }
 
     static func daysBetweenYears(start: UInt, end: UInt) -> UInt {
-        if start == end {
+        guard start != end else {
             return 0
         }
+
         let yearsInBetween: UInt = (end - start - 1)
         return yearsInBetween * daysPerYear + numberOfLeapYearsBetween(start:start, end:end)
     }
@@ -103,10 +101,8 @@ class DateUtils: NSObject {
     }
 
     static func daysFromBeginningOfYear(date: Date) -> UInt {
-        var days = daysPerMonth.dropLast(Int(12 - date.month.rawValue)).reduce(date.day - 1, { (total, daysInMonth) -> UInt in total + daysInMonth})
-        if isLeapYear(year: date.year) && date.month.rawValue > Month.feb.rawValue {
-            days += 1
-        }
+        var days = daysPerMonth.dropLast(Int(12 - date.month.rawValue)).reduce(date.day - 1) { $0 + $1 }
+        if isLeapYear(year: date.year) && date.month.rawValue > Month.feb.rawValue { days += 1 }
         return days
     }
 }

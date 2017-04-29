@@ -22,7 +22,7 @@ class DaysCalcTests: XCTestCase {
         super.tearDown()
     }
 
-    func shoudError(result: Result) {
+    func shouldError(result: Result) {
         switch result {
         case .failure(let error):
             XCTAssertEqual(error, DaysCalcError.outOfIntervalError)
@@ -35,14 +35,14 @@ class DaysCalcTests: XCTestCase {
         let start = Date(year: 1, month: .apr, day: 1)
         let end = Date(year:9999, month: .may, day: 2)
         let result = DateUtils.daysBetween(start: start, end: end)
-        shoudError(result: result)
+        shouldError(result: result)
     }
 
     func testDateValidHigherInterval() {
         let start = Date(year: 1999, month: .apr, day: 1)
         let end = Date(year:9999, month: .may, day: 2)
         let result = DateUtils.daysBetween(start: start, end: end)
-        shoudError(result: result)
+        shouldError(result: result)
     }
 
     func testIsLeap() {
@@ -97,10 +97,10 @@ class DaysCalcTests: XCTestCase {
         XCTAssert(days == 60)
     }
 
-    func assertDays(result: Result, days: UInt) {
+    func assertDays(result: Result, expected: UInt) {
         switch result {
-        case .success(let days):
-            XCTAssert(days == days)
+        case .success(let daysCalculated):
+            XCTAssert(expected == daysCalculated)
         default:
             XCTFail()
         }
@@ -109,11 +109,23 @@ class DaysCalcTests: XCTestCase {
 
     func testDaysBetween() {
         let result19 = DateUtils.daysBetween(start: Date(year: 1983, month: .jun, day: 2), end: Date(year: 1983, month: .jun, day: 22))
-        assertDays(result: result19, days: 19)
+        assertDays(result: result19, expected: 19)
         let result173 = DateUtils.daysBetween(start: Date(year: 1984, month: .jul, day: 4), end: Date(year: 1984, month: .dec, day: 25))
-        assertDays(result: result173, days: 173)
+        assertDays(result: result173, expected: 173)
         let result1979 = DateUtils.daysBetween(start: Date(year: 1989, month: .jan, day: 3), end: Date(year: 1983, month: .aug, day: 3))
-        assertDays(result: result1979, days: 1979)
+        assertDays(result: result1979, expected: 1979)
+        let resultEqual = DateUtils.daysBetween(start: Date(year: 1989, month: .jan, day: 3), end: Date(year: 1989, month: .jan, day: 3))
+        assertDays(result: resultEqual, expected: 0)
+        let result0 = DateUtils.daysBetween(start: Date(year: 1989, month: .jan, day: 3), end: Date(year: 1989, month: .jan, day: 4))
+        assertDays(result: result0, expected: 0)
+        let resultReversed = DateUtils.daysBetween(start: Date(year: 1989, month: .jan, day: 3), end: Date(year: 1989, month: .jan, day: 2))
+        assertDays(result: resultReversed, expected: 0)
+        let result29Feb = DateUtils.daysBetween(start: Date(year: 2016, month: .feb, day: 29), end: Date(year: 2016, month: .mar, day: 2))
+        assertDays(result: result29Feb, expected: 1)
+        let result28Feb = DateUtils.daysBetween(start: Date(year: 2016, month: .feb, day: 28), end: Date(year: 2016, month: .mar, day: 2))
+        assertDays(result: result28Feb, expected: 2)
+        let resultLong = DateUtils.daysBetween(start: Date(year: 1901, month: .mar, day: 15), end: Date(year: 2001, month: .aug, day: 30))
+        assertDays(result: resultLong, expected: 36692)
     }
 
 

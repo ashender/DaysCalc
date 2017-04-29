@@ -12,7 +12,7 @@ enum Month: UInt {
     case jan = 0, feb, mar, apr, may, jun, jul, aug, sept, oct, nov, dec
 }
 
-class Date : Comparable {
+class Date {
     let year: UInt
     let month: Month
     let day: UInt
@@ -21,6 +21,9 @@ class Date : Comparable {
         self.month = month
         self.day = day
     }
+}
+
+extension Date: Comparable {
 
     static func < (lhs: Date, rhs: Date) -> Bool {
         if lhs.year != rhs.year {
