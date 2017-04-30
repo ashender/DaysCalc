@@ -97,7 +97,12 @@ class DateUtils: NSObject {
 
     static func numberOfLeapYearsBetween(start: UInt, end: UInt) -> UInt {
         let end = end - 1
-        return (end/4 - end/100 + end/400) - (start/4 - start/100 + start/400)
+        return numberOfLeapYearsSinceEra(year: end) - numberOfLeapYearsSinceEra(year: start)
+    }
+
+
+    static fileprivate func numberOfLeapYearsSinceEra(year: UInt) -> UInt {
+        return year/4 - year/100 + year/400
     }
 
     static func daysFromBeginningOfYear(date: Date) -> UInt {
